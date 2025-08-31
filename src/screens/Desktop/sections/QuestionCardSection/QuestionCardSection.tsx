@@ -16,6 +16,10 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
   const [filteredQuestions, setFilteredQuestions] = useState<any[]>([]);
   const [selectedBets, setSelectedBets] = useState<{[key: string]: 'yes' | 'no' | null}>({});
   const [betAmounts, setBetAmounts] = useState<{[key: string]: number}>({});
+  
+  // Touch/swipe state
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   // Main featured questions data for carousel - all events from all categories
   const mainQuestions = [
@@ -636,6 +640,32 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
     setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
+  // Touch/swipe handlers
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    } else if (isRightSwipe) {
+      prevSlide();
+    }
+  };
+
   const handleCardClick = (questionId: string) => {
     navigate(`/event/${questionId}`);
   };
@@ -652,6 +682,9 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
       <div className="relative w-full">
         <Card 
           className="w-full bg-[#2c2c2c] rounded-lg overflow-hidden border border-solid border-[#545454] shadow-[0px_3px_6px_#0000000a,0px_6px_12px_#0000000a]"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
           <CardContent className="p-4 sm:p-6 lg:p-10">
             <div className="flex flex-col lg:flex-row items-start justify-between gap-6 lg:gap-0">
@@ -754,14 +787,14 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                   </div>
                 </div>
 
-                <div className="flex flex-col h-48 sm:h-64 lg:h-80 items-start w-full">
+                <div className="flex flex-col h-64 sm:h-80 lg:h-96 items-start w-full">
                   <div className="flex items-center w-full flex-1">
                     {/* Y-axis labels */}
-                    <div className="inline-flex flex-col items-end justify-between px-2 py-0 h-full w-8">
+                    <div className="inline-flex flex-col items-end justify-between px-2 py-0 h-full w-10 sm:w-12">
                       {yAxisLabels.map((label, index) => (
                         <span
                           key={`y-label-${index}`}
-                          className="font-normal text-[#ffffffb2] text-sm font-['Inter',Helvetica]"
+                          className="font-normal text-[#ffffffb2] text-xs sm:text-sm font-['Inter',Helvetica]"
                         >
                           {label}
                         </span>
@@ -842,15 +875,15 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                                 <polyline
                                   fill="none"
                                   stroke={color}
-                                  strokeWidth="3"
+                                  strokeWidth="4"
                                   points={pattern}
                                 />
                                 {/* Dotted line extension */}
                                 <polyline
                                   fill="none"
                                   stroke={color}
-                                  strokeWidth="3"
-                                  strokeDasharray="5,5"
+                                  strokeWidth="4"
+                                  strokeDasharray="6,6"
                                   points="600,75 660,70"
                                 />
                               </>
@@ -862,11 +895,11 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                   </div>
 
                   {/* X-axis labels */}
-                  <div className="pl-10 pr-0 pt-3 pb-0 w-full flex items-start justify-between">
+                  <div className="pl-10 sm:pl-12 pr-0 pt-3 pb-0 w-full flex items-start justify-between">
                     {xAxisLabels.map((label, index) => (
                       <span
                         key={`x-label-${index}`}
-                        className="font-normal text-[#ffffffb2] text-sm font-['Inter',Helvetica]"
+                        className="font-normal text-[#ffffffb2] text-xs sm:text-sm font-['Inter',Helvetica]"
                       >
                         {label}
                       </span>

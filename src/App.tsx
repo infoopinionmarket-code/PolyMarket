@@ -7,6 +7,7 @@ import { TermsPage } from "./screens/TermsPage";
 import { PrivacyPage } from "./screens/PrivacyPage";
 import { LegalPage } from "./screens/LegalPage";
 import { GoogleAnalytics } from "./components/Analytics";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 export const App = (): JSX.Element => {
   // Google Analytics Measurement ID - замените на ваш реальный ID
@@ -27,6 +28,9 @@ export const App = (): JSX.Element => {
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/legal" element={<LegalPage />} />
       </Routes>
+
+      {/* Scroll to top button */}
+      <ScrollToTop />
     </>
   );
 };

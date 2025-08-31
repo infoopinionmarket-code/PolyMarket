@@ -735,7 +735,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
               </div>
 
               {/* Right side - Chart */}
-              <div className="flex flex-col flex-1 items-end gap-6 ml-8">
+              <div className="flex flex-col flex-1 items-end gap-4 lg:gap-6 ml-0 lg:ml-8">
                 <div className="flex w-full items-center justify-end gap-6">
                   <div className="flex items-center gap-6">
                     <div className="inline-flex items-center gap-1">
@@ -754,7 +754,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                   </div>
                 </div>
 
-                <div className="flex flex-col h-80 items-start w-full">
+                <div className="flex flex-col h-48 sm:h-64 lg:h-80 items-start w-full">
                   <div className="flex items-center w-full flex-1">
                     {/* Y-axis labels */}
                     <div className="inline-flex flex-col items-end justify-between px-2 py-0 h-full w-8">
@@ -831,7 +831,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
           </CardContent>
           
           {/* Carousel navigation inside card */}
-          <CardFooter className="px-10 pb-6 pt-0">
+          <CardFooter className="px-4 sm:px-6 lg:px-10 pb-4 sm:pb-6 pt-0">
             <div className="flex items-center justify-between w-full">
               {/* Left arrow */}
               <Button
@@ -841,9 +841,9 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                   handleMainCardClick(e);
                   prevSlide();
                 }}
-                className="w-10 h-10 p-0 text-white hover:bg-white/10 rounded border border-[#545454] bg-[#3c3c3c]"
+                className="w-8 h-8 sm:w-10 sm:h-10 p-0 text-white hover:bg-white/10 rounded border border-[#545454] bg-[#3c3c3c]"
               >
-                <ChevronLeftIcon className="w-5 h-5" />
+                <ChevronLeftIcon className="w-4 h-4 sm:w-5 sm:h-5" />
               </Button>
 
               {/* Dots indicator */}
@@ -872,9 +872,9 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                   handleMainCardClick(e);
                   nextSlide();
                 }}
-                className="w-10 h-10 p-0 text-white hover:bg-white/10 rounded border border-[#545454] bg-[#3c3c3c]"
+                className="w-8 h-8 sm:w-10 sm:h-10 p-0 text-white hover:bg-white/10 rounded border border-[#545454] bg-[#3c3c3c]"
               >
-                <ChevronRightIcon className="w-5 h-5" />
+                <ChevronRightIcon className="w-4 h-4 sm:w-5 sm:h-5" />
               </Button>
             </div>
           </CardFooter>

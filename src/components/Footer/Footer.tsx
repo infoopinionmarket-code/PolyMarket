@@ -17,6 +17,13 @@ export const Footer = (): JSX.Element => {
   ];
 
   const handleCategoryClick = (categoryId: string) => {
+    // Scroll to top first
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    
+    // Then navigate
     if (categoryId === "all") {
       navigate("/");
     } else {

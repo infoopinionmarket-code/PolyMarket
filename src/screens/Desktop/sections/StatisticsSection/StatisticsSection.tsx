@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../../../../components/ui/button";
 
 export const StatisticsSection = (): JSX.Element => {
   return (
-    <footer className="flex w-full items-center justify-center py-6 bg-[#2c2c2c] border-t border-[#545454]">
-      <div className="flex w-full max-w-[1440px] items-center gap-4 px-20">
+    <footer className="flex flex-col w-full items-center bg-[#2c2c2c] border-t border-[#545454]">
+      {/* Main footer content */}
+      <div className="flex w-full max-w-[1440px] items-center gap-4 px-20 py-6">
         <img
           className="w-[90px] h-10"
           alt="Opinion Market Logo"
@@ -28,6 +30,32 @@ export const StatisticsSection = (): JSX.Element => {
           >
             Sign Up
           </Button>
+        </div>
+      </div>
+
+      {/* Legal links section */}
+      <div className="w-full max-w-[1440px] px-20 pb-4 border-t border-[#545454]">
+        <div className="flex items-center justify-center gap-6 pt-4">
+          <Link 
+            to="/terms" 
+            className="text-[#c7c7c7] hover:text-white text-sm font-medium transition-colors"
+          >
+            Terms of Service
+          </Link>
+          <span className="text-[#545454]">|</span>
+          <Link 
+            to="/privacy" 
+            className="text-[#c7c7c7] hover:text-white text-sm font-medium transition-colors"
+          >
+            Privacy Policy
+          </Link>
+          <span className="text-[#545454]">|</span>
+          <Link 
+            to="/legal" 
+            className="text-[#c7c7c7] hover:text-white text-sm font-medium transition-colors"
+          >
+            Legal Notice
+          </Link>
         </div>
       </div>
     </footer>

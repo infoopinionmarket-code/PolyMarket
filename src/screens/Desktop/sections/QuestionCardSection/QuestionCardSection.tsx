@@ -687,9 +687,9 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
           onTouchEnd={onTouchEnd}
         >
           <CardContent className="p-4 sm:p-6 lg:p-10">
-            <div className="flex flex-col lg:flex-row items-start justify-between gap-6 lg:gap-0">
+            <div className="flex flex-col lg:flex-row items-start justify-between gap-6 lg:gap-8">
               {/* Left side - Question details */}
-              <div className="flex flex-col w-full lg:w-[480px] items-start gap-4 lg:gap-6">
+              <div className="flex flex-col w-full lg:w-[400px] items-start gap-4 lg:gap-6">
                 <div className="flex items-center gap-3 sm:gap-4 w-full">
                   <img
                     className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-cover rounded-lg flex-shrink-0"
@@ -768,7 +768,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
               </div>
 
               {/* Right side - Chart */}
-              <div className="flex flex-col flex-1 items-end gap-4 lg:gap-6 ml-0 lg:ml-8">
+              <div className="flex flex-col flex-1 lg:min-w-[500px] items-end gap-4 lg:gap-6 ml-0 lg:ml-8">
                 <div className="flex w-full items-center justify-end gap-6">
                   <div className="flex items-center gap-6">
                     <div className="inline-flex items-center gap-1">
@@ -787,7 +787,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                   </div>
                 </div>
 
-                <div className="flex flex-col h-64 sm:h-80 lg:h-96 items-start w-full">
+                <div className="flex flex-col h-72 sm:h-96 lg:h-[28rem] items-start w-full">
                   <div className="flex items-center w-full flex-1">
                     {/* Y-axis labels */}
                     <div className="inline-flex flex-col items-end justify-between px-2 py-0 h-full w-10 sm:w-12">
@@ -827,19 +827,19 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
 
                       {/* Chart line - simplified version */}
                       <div className="absolute inset-3">
-                        <svg className="w-full h-full" viewBox="0 0 600 240">
+                        <svg className="w-full h-full" viewBox="0 0 700 280">
                           {(() => {
                             // Dynamic chart based on event data - same logic as EventDetailsPage
                             const getChartPattern = (eventId: string, yesPercentage: number) => {
                               const patterns = {
                                 // Economy events
-                                'economy-0': "0,180 60,150 120,120 180,100 240,110 300,105 360,95 420,90 480,85 540,80 600,75",
-                                'economy-1': "0,120 60,118 120,122 180,119 240,121 300,120 360,118 420,122 480,120 540,119 600,121",
-                                'economy-2': "0,140 60,130 120,145 180,135 240,150 300,140 360,155 420,145 480,160 540,150 600,165",
+                                'economy-0': "0,220 70,180 140,150 210,120 280,130 350,125 420,115 490,110 560,105 630,100 700,95",
+                                'economy-1': "0,150 70,148 140,152 210,149 280,151 350,150 420,148 490,152 560,150 630,149 700,151",
+                                'economy-2': "0,170 70,160 140,175 210,165 280,180 350,170 420,185 490,175 560,190 630,180 700,195",
                                 // Politics events
-                                'politics-0': "0,120 60,125 120,130 180,135 240,140 300,145 360,150 420,155 480,160 540,165 600,170",
-                                'politics-1': "0,140 60,130 120,135 180,125 240,130 300,120 360,125 420,115 480,120 540,110 600,115",
-                                'politics-2': "0,150 60,155 120,160 180,165 240,170 300,175 360,180 420,175 480,170 540,175 600,180",
+                                'politics-0': "0,150 70,155 140,160 210,165 280,170 350,175 420,180 490,185 560,190 630,195 700,200",
+                                'politics-1': "0,170 70,160 140,165 210,155 280,160 350,150 420,155 490,145 560,150 630,140 700,145",
+                                'politics-2': "0,180 70,185 140,190 210,195 280,200 350,205 420,210 490,205 560,200 630,205 700,210",
                                 // Sustainability events
                                 'sustainability-0': "0,160 60,150 120,140 180,130 240,120 300,110 360,100 420,90 480,85 540,80 600,75",
                                 'sustainability-1': "0,150 60,145 120,140 180,135 240,130 300,125 360,120 420,115 480,110 540,105 600,100",
@@ -858,10 +858,10 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                                 'sports-2': "0,150 60,145 120,140 180,135 240,130 300,125 360,120 420,115 480,110 540,105 600,100",
                                 // Default pattern for other events
                                 'default': yesPercentage > 60 ? 
-                                  "0,180 60,160 120,140 180,120 240,110 300,100 360,90 420,85 480,80 540,75 600,70" :
+                                  "0,220 70,190 140,170 210,150 280,140 350,130 420,120 490,115 560,110 630,105 700,100" :
                                   yesPercentage > 40 ?
-                                  "0,150 60,145 120,140 180,135 240,130 300,125 360,120 420,115 480,110 540,105 600,100" :
-                                  "0,100 60,110 120,125 180,140 240,155 300,165 360,175 420,180 480,185 540,190 600,195"
+                                  "0,180 70,175 140,170 210,165 280,160 350,155 420,150 490,145 560,140 630,135 700,130" :
+                                  "0,130 70,140 140,155 210,170 280,185 350,195 420,205 490,210 560,215 630,220 700,225"
                               };
                               return patterns[eventId as keyof typeof patterns] || patterns.default;
                             };
@@ -884,7 +884,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                                   stroke={color}
                                   strokeWidth="4"
                                   strokeDasharray="6,6"
-                                  points="600,75 660,70"
+                                  points="700,100 760,95"
                                 />
                               </>
                             );

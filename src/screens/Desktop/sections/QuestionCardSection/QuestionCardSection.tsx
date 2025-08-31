@@ -645,25 +645,25 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
     e.stopPropagation();
   };
   return (
-    <section className="flex flex-col w-full items-center gap-10 py-12">
-      <div className="flex flex-col w-full max-w-[1440px] items-start gap-10 px-20">
+    <section className="flex flex-col w-full items-center gap-6 sm:gap-8 lg:gap-10 py-8 sm:py-12">
+      <div className="flex flex-col w-full max-w-[1440px] items-start gap-6 sm:gap-8 lg:gap-10 px-4 sm:px-8 lg:px-20">
       {/* Main featured question card with carousel - only show on "all" category */}
       {showMainCard && activeCategory === "all" && (
       <div className="relative w-full">
         <Card 
           className="w-full bg-[#2c2c2c] rounded-lg overflow-hidden border border-solid border-[#545454] shadow-[0px_3px_6px_#0000000a,0px_6px_12px_#0000000a]"
         >
-          <CardContent className="p-10">
-            <div className="flex items-start justify-between">
+          <CardContent className="p-4 sm:p-6 lg:p-10">
+            <div className="flex flex-col lg:flex-row items-start justify-between gap-6 lg:gap-0">
               {/* Left side - Question details */}
-              <div className="flex flex-col w-[480px] items-start gap-6">
-                <div className="flex items-center gap-4 w-full">
+              <div className="flex flex-col w-full lg:w-[480px] items-start gap-4 lg:gap-6">
+                <div className="flex items-center gap-3 sm:gap-4 w-full">
                   <img
-                    className="w-20 h-20 object-cover rounded-lg"
+                    className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-cover rounded-lg flex-shrink-0"
                     alt="Question image"
                     src={mainQuestion.image}
                   />
-                  <h2 className="font-semibold text-white text-2xl leading-tight flex-1">
+                  <h2 className="font-semibold text-white text-lg sm:text-xl lg:text-2xl leading-tight flex-1">
                     {mainQuestion.title}
                   </h2>
                 </div>
@@ -883,22 +883,22 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
       )}
 
       {/* Grid of smaller question cards */}
-      <div className="grid grid-cols-3 gap-[30px] w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-[30px] w-full">
         {filteredQuestions.map((card, index) => (
           <Card
             key={card.id}
             className="bg-[#2c2c2c] rounded-lg border border-solid border-[#545454] shadow-[0px_3px_6px_#00000005,0px_6px_12px_#00000005] cursor-pointer hover:border-[#666] transition-colors"
             onClick={() => handleCardClick(card.id)}
           >
-            <CardContent className="p-6 flex flex-col gap-4">
+            <CardContent className="p-4 sm:p-6 flex flex-col gap-3 sm:gap-4">
               {/* Card header with image and title */}
-              <div className="flex items-start gap-[9px] w-full">
+              <div className="flex items-start gap-2 sm:gap-[9px] w-full">
                 <img
-                  className="w-[42px] h-[42px] object-cover rounded"
+                  className="w-8 h-8 sm:w-[42px] sm:h-[42px] object-cover rounded flex-shrink-0"
                   alt="Question image"
                   src={card.image}
                 />
-                <h3 className="font-medium text-white text-[15px] font-['Inter',Helvetica] leading-[21px]">
+                <h3 className="font-medium text-white text-sm sm:text-[15px] font-['Inter',Helvetica] leading-5 sm:leading-[21px] line-clamp-3">
                   {card.title}
                 </h3>
               </div>
@@ -925,12 +925,12 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                   </div>
 
                   {/* Yes/No buttons */}
-                  <div className="flex items-center gap-3 w-full">
+                  <div className="flex items-center gap-2 sm:gap-3 w-full">
                     {/* Yes option */}
                     <div className="flex-col gap-1 flex-1 flex items-center">
                       <button 
                         onClick={() => handleBetSelection(card.id, 'yes')}
-                        className={`h-10 w-full font-bold text-base font-['Inter',Helvetica] leading-[21px] rounded-lg border-2 transition-all ${
+                        className={`h-8 sm:h-10 w-full font-bold text-sm sm:text-base font-['Inter',Helvetica] leading-[21px] rounded-lg border-2 transition-all ${
                           selectedBets[card.id] === 'yes' 
                             ? 'bg-[#c7e055] border-white text-[#1a1a1a] shadow-lg' 
                             : 'bg-[#b2d33a] border-[#8fb11e] text-[#2c2c2c] hover:bg-[#c0e040]'
@@ -953,7 +953,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                     <div className="flex-col gap-1 flex-1 flex items-center">
                       <button 
                         onClick={() => handleBetSelection(card.id, 'no')}
-                        className={`h-10 w-full font-bold text-base font-['Inter',Helvetica] leading-[21px] rounded-lg border-2 transition-all ${
+                        className={`h-8 sm:h-10 w-full font-bold text-sm sm:text-base font-['Inter',Helvetica] leading-[21px] rounded-lg border-2 transition-all ${
                           selectedBets[card.id] === 'no' 
                             ? 'bg-[#e63946] border-white text-white shadow-lg' 
                             : 'bg-[#d82737] border-[#d82737] text-white hover:bg-[#e03040]'

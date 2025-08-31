@@ -689,7 +689,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
           <CardContent className="p-4 sm:p-6 lg:p-10">
             <div className="flex flex-col lg:flex-row items-start justify-between gap-6 lg:gap-8">
               {/* Left side - Question details */}
-              <div className="flex flex-col w-full lg:w-[400px] items-start gap-4 lg:gap-6">
+              <div className="flex flex-col w-full lg:w-[350px] items-start gap-4 lg:gap-6">
                 <div className="flex items-center gap-3 sm:gap-4 w-full">
                   <img
                     className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-cover rounded-lg flex-shrink-0"
@@ -768,7 +768,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
               </div>
 
               {/* Right side - Chart */}
-              <div className="flex flex-col flex-1 lg:min-w-[500px] items-end gap-4 lg:gap-6 ml-0 lg:ml-8">
+              <div className="flex flex-col flex-1 lg:min-w-[600px] items-end gap-4 lg:gap-6 ml-0 lg:ml-8">
                 <div className="flex w-full items-center justify-end gap-6">
                   <div className="flex items-center gap-6">
                     <div className="inline-flex items-center gap-1">
@@ -827,13 +827,13 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
 
                       {/* Chart line - simplified version */}
                       <div className="absolute inset-3">
-                        <svg className="w-full h-full" viewBox="0 0 700 280">
+                        <svg className="w-full h-full" viewBox="0 0 800 300">
                           {(() => {
                             // Dynamic chart based on event data - same logic as EventDetailsPage
                             const getChartPattern = (eventId: string, yesPercentage: number) => {
                               const patterns = {
                                 // Economy events
-                                'economy-0': "0,220 70,180 140,150 210,120 280,130 350,125 420,115 490,110 560,105 630,100 700,95",
+                                'economy-0': "0,240 80,200 160,170 240,140 320,150 400,145 480,135 560,130 640,125 720,120 800,115",
                                 'economy-1': "0,150 70,148 140,152 210,149 280,151 350,150 420,148 490,152 560,150 630,149 700,151",
                                 'economy-2': "0,170 70,160 140,175 210,165 280,180 350,170 420,185 490,175 560,190 630,180 700,195",
                                 // Politics events
@@ -858,10 +858,10 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                                 'sports-2': "0,180 70,175 140,170 210,165 280,160 350,155 420,150 490,145 560,140 630,135 700,130",
                                 // Default pattern for other events
                                 'default': yesPercentage > 60 ? 
-                                  "0,220 70,190 140,170 210,150 280,140 350,130 420,120 490,115 560,110 630,105 700,100" :
+                                  "0,240 80,210 160,190 240,170 320,160 400,150 480,140 560,135 640,130 720,125 800,120" :
                                   yesPercentage > 40 ?
-                                  "0,180 70,175 140,170 210,165 280,160 350,155 420,150 490,145 560,140 630,135 700,130" :
-                                  "0,130 70,140 140,155 210,170 280,185 350,195 420,205 490,210 560,215 630,220 700,225"
+                                  "0,200 80,195 160,190 240,185 320,180 400,175 480,170 560,165 640,160 720,155 800,150" :
+                                  "0,150 80,160 160,175 240,190 320,205 400,215 480,225 560,230 640,235 720,240 800,245"
                               };
                               return patterns[eventId as keyof typeof patterns] || patterns.default;
                             };
@@ -884,7 +884,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                                   stroke={color}
                                   strokeWidth="4"
                                   strokeDasharray="6,6"
-                                  points="700,100 760,95"
+                                  points="800,120 860,115"
                                 />
                               </>
                             );

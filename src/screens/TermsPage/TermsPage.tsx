@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../../components/ui/button";
+import { Footer } from "../../components/Footer";
 
 export const TermsPage = (): JSX.Element => {
   return (
@@ -101,6 +102,8 @@ export const TermsPage = (): JSX.Element => {
           </div>
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 };

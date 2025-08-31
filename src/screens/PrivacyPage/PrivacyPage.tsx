@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../../components/ui/button";
+import { Footer } from "../../components/Footer";
 
 export const PrivacyPage = (): JSX.Element => {
   return (
@@ -99,6 +100,8 @@ export const PrivacyPage = (): JSX.Element => {
           </div>
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 };

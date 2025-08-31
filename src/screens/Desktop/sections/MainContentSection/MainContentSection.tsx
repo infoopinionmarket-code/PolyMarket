@@ -38,7 +38,7 @@ export const MainContentSection: React.FC<MainContentSectionProps> = ({ activeCa
   };
 
   return (
-    <header className="flex flex-col w-full items-center gap-6 py-6 bg-[#2c2c2c] border-b border-[#545454]">
+    <header className="flex flex-col w-full items-center gap-4 sm:gap-6 py-4 sm:py-6 bg-[#2c2c2c] border-b border-[#545454]">
       {/* Top section with logo and auth buttons */}
       <div className="flex w-full max-w-[1440px] items-center gap-4 relative px-4 sm:px-8 lg:px-20">
         <img
@@ -71,19 +71,19 @@ export const MainContentSection: React.FC<MainContentSectionProps> = ({ activeCa
 
       {/* Categories navigation */}
       <NavigationMenu className="w-full max-w-[1440px] px-4 sm:px-8 lg:px-20">
-        <NavigationMenuList className="flex w-full h-10 items-center gap-2 sm:gap-4 lg:gap-6 overflow-x-auto scrollbar-hide">
+        <NavigationMenuList className="flex flex-wrap sm:flex-nowrap w-full min-h-10 items-center justify-center sm:justify-start gap-2 sm:gap-4 lg:gap-6 sm:overflow-x-auto sm:scrollbar-hide">
           {categories.map((category) => (
             <NavigationMenuItem key={category.id}>
               {category.id === "all" ? (
                 <Button 
                   onClick={() => handleCategoryClick(category.id)}
-                  className={`h-8 sm:h-10 px-2 sm:px-3 py-0 rounded-lg transition-colors whitespace-nowrap ${
+                  className={`h-8 sm:h-10 px-3 sm:px-3 py-0 rounded-full sm:rounded-lg transition-colors whitespace-nowrap ${
                     activeCategory === category.id 
                       ? "bg-[#b2d33a] hover:bg-[#c0e040]" 
                       : "bg-transparent hover:bg-[#3c3c3c]"
                   }`}
                 >
-                  <span className={`font-semibold text-sm sm:text-base tracking-[-0.07px] ${
+                  <span className={`font-semibold text-xs sm:text-base tracking-[-0.07px] ${
                     activeCategory === category.id ? "text-[#2c2c2c]" : "text-[#c7c7c7]"
                   }`}>
                     {category.name}
@@ -92,7 +92,7 @@ export const MainContentSection: React.FC<MainContentSectionProps> = ({ activeCa
               ) : (
                 <button
                   onClick={() => handleCategoryClick(category.id)}
-                  className={`font-medium text-sm sm:text-base tracking-[-0.07px] transition-colors px-2 py-1 rounded whitespace-nowrap ${
+                  className={`font-medium text-xs sm:text-base tracking-[-0.07px] transition-colors px-3 py-2 rounded-full sm:rounded whitespace-nowrap ${
                     activeCategory === category.id 
                       ? "text-[#2c2c2c] bg-[#b2d33a]" 
                       : "text-[#c7c7c7] hover:text-white hover:bg-[#3c3c3c]"

@@ -790,11 +790,11 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                 <div className="flex flex-col h-72 sm:h-96 lg:h-[28rem] items-start w-full">
                   <div className="flex items-center w-full flex-1">
                     {/* Y-axis labels */}
-                    <div className="inline-flex flex-col items-end justify-between px-2 py-0 h-full w-10 sm:w-12">
+                    <div className="inline-flex flex-col items-end justify-between px-1 py-0 h-full w-8 sm:w-10">
                       {yAxisLabels.map((label, index) => (
                         <span
                           key={`y-label-${index}`}
-                          className="font-normal text-[#ffffffb2] text-xs sm:text-sm font-['Inter',Helvetica]"
+                          className="font-normal text-[#ffffffb2] text-xs font-['Inter',Helvetica]"
                         >
                           {label}
                         </span>
@@ -802,7 +802,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                     </div>
 
                     {/* Chart grid and line */}
-                    <div className="relative flex-1 h-full bg-[#1a1a1a] rounded border border-[#333] ml-2">
+                    <div className="relative flex-1 h-full bg-[#1a1a1a] rounded border border-[#333] ml-1">
                       <div className="flex-col w-full h-full justify-between px-px py-1.5 flex items-start">
                         {Array(7)
                           .fill(0)
@@ -895,7 +895,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                   </div>
 
                   {/* X-axis labels */}
-                  <div className="pl-10 sm:pl-12 pr-0 pt-3 pb-0 w-full flex items-start justify-between">
+                  <div className="pl-8 sm:pl-10 pr-0 pt-3 pb-0 w-full flex items-start justify-between">
                     {xAxisLabels.map((label, index) => (
                       <span
                         key={`x-label-${index}`}

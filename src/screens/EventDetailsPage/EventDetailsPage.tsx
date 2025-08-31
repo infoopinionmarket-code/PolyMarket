@@ -4,7 +4,7 @@ import { BarChartIcon, ClockIcon, ArrowLeftIcon, StarIcon } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { MainContentSection } from "../Desktop/sections/MainContentSection";
-import { StatisticsSection } from "../Desktop/sections/StatisticsSection";
+import { Footer } from "../../components/Footer";
 
 export const EventDetailsPage = (): JSX.Element => {
   const { eventId } = useParams();
@@ -612,8 +612,8 @@ export const EventDetailsPage = (): JSX.Element => {
         <MainContentSection activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
         
         {/* Main content */}
-        <main className="flex flex-col w-full items-center gap-8 py-12 bg-[#3d3d3d]">
-          <div className="flex flex-col w-full max-w-[1440px] items-start gap-8 px-20 mx-auto">
+        <main className="flex flex-col w-full items-center gap-6 sm:gap-8 py-8 sm:py-12 bg-[#3d3d3d]">
+          <div className="flex flex-col w-full max-w-[1440px] items-start gap-6 sm:gap-8 px-4 sm:px-8 lg:px-20 mx-auto">
           {/* Back button */}
           <Button
             variant="ghost"
@@ -625,17 +625,17 @@ export const EventDetailsPage = (): JSX.Element => {
           </Button>
 
           {/* Event header */}
-          <div className="flex items-start gap-6 w-full">
+          <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 w-full">
             <img
-              className="w-32 h-32 object-cover rounded-lg"
+              className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 object-cover rounded-lg flex-shrink-0"
               alt="Event image"
               src={eventData.image}
             />
-            <div className="flex-1">
-              <h1 className="font-bold text-white text-4xl leading-tight mb-4">
+            <div className="flex-1 w-full">
+              <h1 className="font-bold text-white text-xl sm:text-2xl lg:text-4xl leading-tight mb-3 sm:mb-4">
                 {eventData.title}
               </h1>
-              <div className="flex items-center gap-6">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6">
                 <div className="flex items-center gap-2 px-3 py-1 bg-[#2c2c2c] rounded-lg border border-[#545454]">
                   <span className="font-medium text-white text-sm">
                     Events
@@ -665,11 +665,11 @@ export const EventDetailsPage = (): JSX.Element => {
           </div>
 
           {/* Main content grid */}
-          <div className="grid grid-cols-3 gap-8 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 w-full">
             {/* Left column - Chart */}
-            <div className="col-span-2">
+            <div className="lg:col-span-2">
               <Card className="bg-[#2c2c2c] rounded-lg border border-solid border-[#545454]">
-                <CardContent className="p-6">
+                <CardContent className="p-4 sm:p-6">
                   {/* Chart periods */}
                   <div className="flex items-center gap-2 mb-6">
                     {chartPeriods.map((period) => (
@@ -796,9 +796,9 @@ export const EventDetailsPage = (): JSX.Element => {
             </div>
 
             {/* Right column - Betting interface */}
-            <div className="col-span-1">
+            <div className="lg:col-span-1">
               <Card className="bg-[#2c2c2c] rounded-lg border border-solid border-[#545454]">
-                <CardContent className="p-6 flex flex-col gap-6">
+                <CardContent className="p-4 sm:p-6 flex flex-col gap-4 sm:gap-6">
                   {/* Event outcome */}
                   <div className="flex flex-col gap-4">
                     <h3 className="font-medium text-white text-lg">
@@ -914,11 +914,11 @@ export const EventDetailsPage = (): JSX.Element => {
           {/* Rules section */}
           <div className="w-full">
             <Card className="bg-[#2c2c2c] rounded-lg border border-solid border-[#545454]">
-              <CardContent className="p-6">
-                <h3 className="font-bold text-white text-xl mb-4">
+              <CardContent className="p-4 sm:p-6">
+                <h3 className="font-bold text-white text-lg sm:text-xl mb-3 sm:mb-4">
                   Rules
                 </h3>
-                <p className="text-white text-base leading-relaxed">
+                <p className="text-white text-sm sm:text-base leading-relaxed">
                   {eventData.rules}
                 </p>
               </CardContent>
@@ -927,7 +927,7 @@ export const EventDetailsPage = (): JSX.Element => {
           </div>
         </main>
 
-        <StatisticsSection />
+        <Footer />
     </div>
   );
 };

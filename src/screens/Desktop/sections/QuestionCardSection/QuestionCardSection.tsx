@@ -797,14 +797,14 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                         <svg className="w-full h-full" viewBox="0 0 600 240">
                           <polyline
                             fill="none"
-                            stroke="#b2d33a"
+                            stroke={mainQuestion.chartColor}
                             strokeWidth="3"
-                            points="0,180 60,150 120,120 180,100 240,110 300,105 360,95 420,90 480,85 540,80 600,75"
+                            points={mainQuestion.chartData}
                           />
                           {/* Dotted line extension */}
                           <polyline
                             fill="none"
-                            stroke="#b2d33a"
+                            stroke={mainQuestion.chartColor}
                             strokeWidth="3"
                             strokeDasharray="5,5"
                             points="600,75 660,70"

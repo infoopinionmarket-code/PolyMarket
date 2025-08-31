@@ -12,8 +12,8 @@ export const LegalPage = (): JSX.Element => {
           <Link to="/">
             <img
               className="relative w-[90.09px] h-10"
-              alt="Logo"
-              src="/image-5.png"
+              alt="Opinion Market Logo"
+              src="/logo-header.png"
             />
           </Link>
           

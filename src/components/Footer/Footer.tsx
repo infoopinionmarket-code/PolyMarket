@@ -33,7 +33,7 @@ export const Footer = (): JSX.Element => {
           <img
             className="w-[90px] h-10"
             alt="Opinion Market Logo"
-            src="/image-5-1.png"
+            src="/logo-footer.png"
           />
         </div>
 

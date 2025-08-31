@@ -43,8 +43,8 @@ export const MainContentSection: React.FC<MainContentSectionProps> = ({ activeCa
       <div className="flex w-full max-w-[1440px] items-center gap-4 relative px-20">
         <img
           className="relative w-[90.09px] h-10"
-          alt="Logo"
-          src="/image-5.png"
+          alt="Opinion Market Logo"
+          src="/logo-header.png"
         />
 
         <div className="flex-1" />

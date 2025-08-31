@@ -768,7 +768,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
               </div>
 
               {/* Right side - Chart */}
-              <div className="flex flex-col flex-1 lg:min-w-[600px] items-end gap-4 lg:gap-6 ml-0 lg:ml-8">
+              <div className="flex flex-col w-full lg:flex-1 lg:min-w-[600px] items-end gap-4 lg:gap-6 ml-0 lg:ml-8">
                 <div className="flex w-full items-center justify-end gap-6">
                   <div className="flex items-center gap-6">
                     <div className="inline-flex items-center gap-1">
@@ -787,7 +787,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                   </div>
                 </div>
 
-                <div className="flex flex-col h-72 sm:h-96 lg:h-[28rem] items-start w-full">
+                <div className="flex flex-col h-80 sm:h-96 lg:h-[28rem] items-start w-full">
                   <div className="flex items-center w-full flex-1">
                     {/* Y-axis labels */}
                     <div className="inline-flex flex-col items-end justify-between px-1 py-0 h-full w-8 sm:w-10">

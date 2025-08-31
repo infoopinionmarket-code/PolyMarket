@@ -6,16 +6,27 @@ import { CategoryPage } from "./screens/CategoryPage/CategoryPage";
 import { TermsPage } from "./screens/TermsPage";
 import { PrivacyPage } from "./screens/PrivacyPage";
 import { LegalPage } from "./screens/LegalPage";
+import { GoogleAnalytics } from "./components/Analytics";
 
 export const App = (): JSX.Element => {
+  // Google Analytics Measurement ID - замените на ваш реальный ID
+  // Пример: const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
+  const GA_MEASUREMENT_ID = process.env.REACT_APP_GA_MEASUREMENT_ID;
+
   return (
-    <Routes>
-      <Route path="/" element={<Desktop />} />
-      <Route path="/category/:categoryId" element={<CategoryPage />} />
-      <Route path="/event/:eventId" element={<EventDetailsPage />} />
-      <Route path="/terms" element={<TermsPage />} />
-      <Route path="/privacy" element={<PrivacyPage />} />
-      <Route path="/legal" element={<LegalPage />} />
-    </Routes>
+    <>
+      {/* Google Analytics */}
+      <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />
+      
+      {/* Routes */}
+      <Routes>
+        <Route path="/" element={<Desktop />} />
+        <Route path="/category/:categoryId" element={<CategoryPage />} />
+        <Route path="/event/:eventId" element={<EventDetailsPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/legal" element={<LegalPage />} />
+      </Routes>
+    </>
   );
 };

@@ -795,20 +795,67 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                       {/* Chart line - simplified version */}
                       <div className="absolute inset-3">
                         <svg className="w-full h-full" viewBox="0 0 600 240">
-                          <polyline
-                            fill="none"
-                            stroke={mainQuestion.chartColor}
-                            strokeWidth="3"
-                            points={mainQuestion.chartData}
-                          />
-                          {/* Dotted line extension */}
-                          <polyline
-                            fill="none"
-                            stroke={mainQuestion.chartColor}
-                            strokeWidth="3"
-                            strokeDasharray="5,5"
-                            points="600,75 660,70"
-                          />
+                          {(() => {
+                            // Dynamic chart based on event data - same logic as EventDetailsPage
+                            const getChartPattern = (eventId: string, yesPercentage: number) => {
+                              const patterns = {
+                                // Economy events
+                                'economy-0': "0,180 60,150 120,120 180,100 240,110 300,105 360,95 420,90 480,85 540,80 600,75",
+                                'economy-1': "0,120 60,118 120,122 180,119 240,121 300,120 360,118 420,122 480,120 540,119 600,121",
+                                'economy-2': "0,140 60,130 120,145 180,135 240,150 300,140 360,155 420,145 480,160 540,150 600,165",
+                                // Politics events
+                                'politics-0': "0,120 60,125 120,130 180,135 240,140 300,145 360,150 420,155 480,160 540,165 600,170",
+                                'politics-1': "0,140 60,130 120,135 180,125 240,130 300,120 360,125 420,115 480,120 540,110 600,115",
+                                'politics-2': "0,150 60,155 120,160 180,165 240,170 300,175 360,180 420,175 480,170 540,175 600,180",
+                                // Sustainability events
+                                'sustainability-0': "0,160 60,150 120,140 180,130 240,120 300,110 360,100 420,90 480,85 540,80 600,75",
+                                'sustainability-1': "0,150 60,145 120,140 180,135 240,130 300,125 360,120 420,115 480,110 540,105 600,100",
+                                'sustainability-2': "0,140 60,135 120,130 180,125 240,120 300,115 360,110 420,105 480,100 540,95 600,90",
+                                // Technology events
+                                'technology-0': "0,180 60,170 120,160 180,150 240,140 300,130 360,120 420,110 480,100 540,90 600,80",
+                                'technology-1': "0,150 60,145 120,140 180,135 240,130 300,125 360,120 420,115 480,110 540,105 600,100",
+                                'technology-2': "0,140 60,145 120,150 180,155 240,150 300,145 360,150 420,155 480,160 540,155 600,160",
+                                // Culture events
+                                'culture-0': "0,140 60,145 120,150 180,155 240,150 300,145 360,150 420,155 480,160 540,155 600,160",
+                                'culture-1': "0,160 60,150 120,140 180,130 240,120 300,110 360,100 420,90 480,85 540,80 600,75",
+                                'culture-2': "0,120 60,115 120,110 180,105 240,100 300,95 360,90 420,85 480,80 540,75 600,70",
+                                // Sports events
+                                'sports-0': "0,140 60,130 120,120 180,110 240,100 300,90 360,85 420,80 480,75 540,70 600,65",
+                                'sports-1': "0,130 60,120 120,110 180,100 240,90 300,85 360,80 420,75 480,70 540,65 600,60",
+                                'sports-2': "0,150 60,145 120,140 180,135 240,130 300,125 360,120 420,115 480,110 540,105 600,100",
+                                // Default pattern for other events
+                                'default': yesPercentage > 60 ? 
+                                  "0,180 60,160 120,140 180,120 240,110 300,100 360,90 420,85 480,80 540,75 600,70" :
+                                  yesPercentage > 40 ?
+                                  "0,150 60,145 120,140 180,135 240,130 300,125 360,120 420,115 480,110 540,105 600,100" :
+                                  "0,100 60,110 120,125 180,140 240,155 300,165 360,175 420,180 480,185 540,190 600,195"
+                              };
+                              return patterns[eventId as keyof typeof patterns] || patterns.default;
+                            };
+                            
+                            const pattern = getChartPattern(mainQuestion.id, mainQuestion.yesPercentage);
+                            const color = mainQuestion.yesPercentage > 60 ? "#b2d33a" : 
+                                         mainQuestion.yesPercentage > 40 ? "#ffa500" : "#ff6b6b";
+                            
+                            return (
+                              <>
+                                <polyline
+                                  fill="none"
+                                  stroke={color}
+                                  strokeWidth="3"
+                                  points={pattern}
+                                />
+                                {/* Dotted line extension */}
+                                <polyline
+                                  fill="none"
+                                  stroke={color}
+                                  strokeWidth="3"
+                                  strokeDasharray="5,5"
+                                  points="600,75 660,70"
+                                />
+                              </>
+                            );
+                          })()}
                         </svg>
                       </div>
                     </div>

@@ -25,22 +25,38 @@ export const Footer = (): JSX.Element => {
   };
 
   return (
-    <footer className="flex flex-col w-full items-center bg-[#2c2c2c] border-t border-[#545454] py-12">
+    <footer className="flex flex-col w-full items-center bg-[#2c2c2c] border-t border-[#545454] py-8 sm:py-12">
       {/* Main footer content */}
-      <div className="flex w-full max-w-[1440px] items-start gap-12 px-20 mb-8">
-        {/* Logo section */}
-        <div className="flex flex-col gap-6">
+      <div className="flex flex-col lg:flex-row w-full max-w-[1440px] items-start gap-8 lg:gap-12 px-4 sm:px-8 lg:px-20 mb-6 sm:mb-8">
+        {/* Logo and auth buttons section - mobile first */}
+        <div className="flex flex-col sm:flex-row w-full lg:w-auto items-start sm:items-center justify-between gap-4 sm:gap-6">
           <img
             className="w-[90px] h-10"
             alt="Opinion Market Logo"
             src="/logo-footer.png"
           />
+          
+          {/* Auth buttons - mobile */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <Button
+              variant="ghost"
+              onClick={() => window.location.href = 'https://markets.inout.games/?authToken=7dbe639470ff4f12abd41983601b51db6da74cfcc4af23bf08c7f6c413f4a6b51ab948950eb27b99dccaa23e57ba3a56bfe370715beca72cb302dbd4b59a80d8&operatorId=72e338d0-5b66-4c3a-8976-c31ea5957bc9&currency=INR&lang=en'}
+              className="h-8 px-3 text-white font-medium text-sm hover:bg-[#3c3c3c]"
+            >
+              Login
+            </Button>
+
+            <Button 
+              onClick={() => window.location.href = 'https://markets.inout.games/?authToken=7dbe639470ff4f12abd41983601b51db6da74cfcc4af23bf08c7f6c413f4a6b51ab948950eb27b99dccaa23e57ba3a56bfe370715beca72cb302dbd4b59a80d8&operatorId=72e338d0-5b66-4c3a-8976-c31ea5957bc9&currency=INR&lang=en'}
+              className="h-8 px-3 py-0 bg-[#c7c7c7] hover:bg-[#b7b7b7] rounded-lg text-[#2c2c2c] font-medium text-sm"
+            >
+              Sign Up
+            </Button>
+          </div>
         </div>
 
-        <div className="flex-1" />
-
         {/* Center sections with Categories and Legal */}
-        <div className="flex gap-16">
+        <div className="flex flex-col sm:flex-row w-full lg:w-auto gap-8 sm:gap-12 lg:gap-16">
           {/* Categories section */}
           <div className="flex flex-col gap-4">
             <h3 className="text-white font-semibold text-lg">Categories</h3>
@@ -83,10 +99,8 @@ export const Footer = (): JSX.Element => {
           </div>
         </div>
 
-        <div className="flex-1" />
-
-        {/* Auth buttons section - right side */}
-        <div className="flex items-center gap-2">
+        {/* Auth buttons section - desktop only */}
+        <div className="hidden lg:flex items-center gap-2">
           <Button
             variant="ghost"
             onClick={() => window.location.href = 'https://markets.inout.games/?authToken=7dbe639470ff4f12abd41983601b51db6da74cfcc4af23bf08c7f6c413f4a6b51ab948950eb27b99dccaa23e57ba3a56bfe370715beca72cb302dbd4b59a80d8&operatorId=72e338d0-5b66-4c3a-8976-c31ea5957bc9&currency=INR&lang=en'}
@@ -105,7 +119,7 @@ export const Footer = (): JSX.Element => {
       </div>
 
       {/* Copyright section */}
-      <div className="w-full max-w-[1440px] px-20 pt-8 border-t border-[#545454]">
+      <div className="w-full max-w-[1440px] px-4 sm:px-8 lg:px-20 pt-6 sm:pt-8 border-t border-[#545454]">
         <div className="flex items-center justify-center">
           <p className="text-[#c7c7c7] text-sm">
             © 2025. All rights reserved

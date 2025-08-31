@@ -8,10 +8,10 @@ export const TermsPage = (): JSX.Element => {
     <div className="bg-[#3d3d3d] min-h-screen flex flex-col items-center w-full">
       {/* Header */}
       <header className="flex flex-col w-full items-center gap-6 py-6 bg-[#2c2c2c] border-b border-[#545454]">
-        <div className="flex w-full max-w-[1440px] items-center gap-4 relative px-20">
+        <div className="flex w-full max-w-[1440px] items-center gap-4 relative px-4 sm:px-8 lg:px-20">
           <Link to="/">
             <img
-              className="relative w-[90.09px] h-10"
+              className="relative w-[90px] h-[40px] sm:w-[117px] sm:h-[52px]"
               alt="Opinion Market Logo"
               src="/logo-header.png"
             />
@@ -30,7 +30,7 @@ export const TermsPage = (): JSX.Element => {
       </header>
 
       {/* Main Content */}
-      <main className="w-full max-w-[800px] px-8 py-12">
+      <main className="w-full max-w-[800px] px-4 sm:px-8 py-8 sm:py-12">
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-white mb-4">Terms of Service</h1>
           <p className="text-lg text-[#c7c7c7]">Version 1.0 - 27.08.2025</p>

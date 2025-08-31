@@ -40,7 +40,7 @@ export const Footer = (): JSX.Element => {
           <img
             className="w-[90px] h-10"
             alt="Opinion Market Logo"
-            src="/logo-footer.png"
+            src="/logo.svg"
           />
           
           {/* Auth buttons - mobile */}

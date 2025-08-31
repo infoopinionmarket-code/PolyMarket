@@ -44,7 +44,7 @@ export const MainContentSection: React.FC<MainContentSectionProps> = ({ activeCa
         <img
           className="relative w-[90px] h-[40px] sm:w-[117px] sm:h-[52px]"
           alt="Opinion Market Logo"
-          src="/logo-header.png"
+          src="/logo.svg"
         />
 
         <div className="flex-1" />

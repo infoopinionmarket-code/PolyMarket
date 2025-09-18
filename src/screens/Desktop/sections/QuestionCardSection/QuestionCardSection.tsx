@@ -20,6 +20,9 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
   // Touch/swipe state
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  
+  // Autoplay state
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   // Main featured questions data for carousel - all events from all categories
   const mainQuestions = [
@@ -548,18 +551,29 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
     return shuffled;
   };
 
-  // Calculate potential income based on bet amount and odds
+  // Calculate potential income based on bet amount and odds (x4-20 multiplier)
   const calculatePotentialIncome = (questionId: string, betType: 'yes' | 'no') => {
     const betAmount = betAmounts[questionId] || 100;
     const currentQuestion = mainQuestions[currentSlide];
     
+    // Generate multiplier between 4x and 20x based on odds
+    let multiplier;
     if (betType === 'yes') {
-      const odds = 100 / currentQuestion.yesPercentage;
-      return Math.round(betAmount * odds);
+      // Higher percentage = lower multiplier (4x-8x), lower percentage = higher multiplier (12x-20x)
+      multiplier = currentQuestion.yesPercentage > 70 ? 
+        Math.random() * 4 + 4 : // 4x-8x for high probability
+        currentQuestion.yesPercentage > 50 ?
+        Math.random() * 6 + 8 : // 8x-14x for medium probability  
+        Math.random() * 8 + 12; // 12x-20x for low probability
     } else {
-      const odds = 100 / currentQuestion.noPercentage;
-      return Math.round(betAmount * odds);
+      multiplier = currentQuestion.noPercentage > 70 ? 
+        Math.random() * 4 + 4 : // 4x-8x for high probability
+        currentQuestion.noPercentage > 50 ?
+        Math.random() * 6 + 8 : // 8x-14x for medium probability
+        Math.random() * 8 + 12; // 12x-20x for low probability
     }
+    
+    return Math.round(betAmount * multiplier);
   };
 
   // Handle bet selection
@@ -596,6 +610,17 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
       type: question.type || "binary" as const
     }));
   };
+
+  // Autoplay effect for carousel
+  useEffect(() => {
+    if (!isAutoPlaying || !showMainCard || activeCategory !== "all") return;
+    
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    }, 5000); // Change slide every 5 seconds
+    
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, showMainCard, activeCategory, totalSlides]);
 
   useEffect(() => {
     // Функция для перемешивания массива
@@ -634,10 +659,12 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    setIsAutoPlaying(false); // Pause autoplay when user interacts
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+    setIsAutoPlaying(false); // Pause autoplay when user interacts
   };
 
   // Touch/swipe handlers
@@ -664,6 +691,8 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
     } else if (isRightSwipe) {
       prevSlide();
     }
+    
+    setIsAutoPlaying(false); // Pause autoplay when user swipes
   };
 
   const handleCardClick = (questionId: string) => {
@@ -763,7 +792,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                   }}
                   className="h-14 w-full bg-[#e4e4e4] hover:bg-[#d4d4d4] border-[#f3f3f3] text-[#2c2c2c] font-bold text-lg font-['Inter',Helvetica] leading-[21px] rounded-lg border border-solid cursor-pointer"
                 >
-                  Place Bet
+                  Earn Smart
                 </Button>
               </div>
 
@@ -936,6 +965,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                       onClick={(e) => {
                         handleMainCardClick(e);
                         setCurrentSlide(index);
+                        setIsAutoPlaying(false); // Pause autoplay when user clicks dot
                       }}
                       className={`w-2 h-2 rounded-full transition-colors ${
                         index === currentSlide ? "bg-white" : "bg-white/30"
@@ -1024,7 +1054,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                         </span>
                         <span className="text-[#666]">→</span>
                         <span className="font-medium text-[#b2d33a] font-['Inter',Helvetica] leading-[21px]">
-                          ₹{Math.round(100 * (100 / card.yesPercentage))}
+                          ₹{Math.round(100 * (card.yesPercentage > 70 ? Math.random() * 4 + 4 : card.yesPercentage > 50 ? Math.random() * 6 + 8 : Math.random() * 8 + 12))}
                         </span>
                       </div>
                     </div>
@@ -1047,7 +1077,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                         </span>
                         <span className="text-[#666]">→</span>
                         <span className="font-medium text-[#b2d33a] font-['Inter',Helvetica] leading-[21px]">
-                          ₹{Math.round(100 * (100 / card.noPercentage))}
+                          ₹{Math.round(100 * (card.noPercentage > 70 ? Math.random() * 4 + 4 : card.noPercentage > 50 ? Math.random() * 6 + 8 : Math.random() * 8 + 12))}
                         </span>
                       </div>
                     </div>

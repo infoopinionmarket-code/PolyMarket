@@ -40,21 +40,21 @@ export const Footer = (): JSX.Element => {
           <img
             className="w-[90px] h-10"
             alt="Opinion Market Logo"
-            src="/logo.svg"
+            src="/OMLogo.png"
           />
           
           {/* Auth buttons - mobile */}
           <div className="flex items-center gap-2 lg:hidden">
             <Button
               variant="ghost"
-              onClick={() => window.location.href = 'https://markets.inout.games/?authToken=7dbe639470ff4f12abd41983601b51db6da74cfcc4af23bf08c7f6c413f4a6b51ab948950eb27b99dccaa23e57ba3a56bfe370715beca72cb302dbd4b59a80d8&operatorId=72e338d0-5b66-4c3a-8976-c31ea5957bc9&currency=INR&lang=en'}
+              onClick={() => window.location.href = 'https://auth.opinion-market.com/'}
               className="h-8 px-3 text-white font-medium text-sm hover:bg-[#3c3c3c]"
             >
               Login
             </Button>
 
             <Button 
-              onClick={() => window.location.href = 'https://markets.inout.games/?authToken=7dbe639470ff4f12abd41983601b51db6da74cfcc4af23bf08c7f6c413f4a6b51ab948950eb27b99dccaa23e57ba3a56bfe370715beca72cb302dbd4b59a80d8&operatorId=72e338d0-5b66-4c3a-8976-c31ea5957bc9&currency=INR&lang=en'}
+              onClick={() => window.location.href = 'https://auth.opinion-market.com/'}
               className="h-8 px-3 py-0 bg-[#c7c7c7] hover:bg-[#b7b7b7] rounded-lg text-[#2c2c2c] font-medium text-sm"
             >
               Sign Up
@@ -110,14 +110,14 @@ export const Footer = (): JSX.Element => {
         <div className="hidden lg:flex items-center gap-2">
           <Button
             variant="ghost"
-            onClick={() => window.location.href = 'https://markets.inout.games/?authToken=7dbe639470ff4f12abd41983601b51db6da74cfcc4af23bf08c7f6c413f4a6b51ab948950eb27b99dccaa23e57ba3a56bfe370715beca72cb302dbd4b59a80d8&operatorId=72e338d0-5b66-4c3a-8976-c31ea5957bc9&currency=INR&lang=en'}
+            onClick={() => window.location.href = 'https://auth.opinion-market.com/'}
             className="h-9 px-4 text-white font-medium text-[14.2px] hover:bg-[#3c3c3c]"
           >
             Login
           </Button>
 
           <Button 
-            onClick={() => window.location.href = 'https://markets.inout.games/?authToken=7dbe639470ff4f12abd41983601b51db6da74cfcc4af23bf08c7f6c413f4a6b51ab948950eb27b99dccaa23e57ba3a56bfe370715beca72cb302dbd4b59a80d8&operatorId=72e338d0-5b66-4c3a-8976-c31ea5957bc9&currency=INR&lang=en'}
+            onClick={() => window.location.href = 'https://auth.opinion-market.com/'}
             className="h-10 px-3 py-0 bg-[#c7c7c7] hover:bg-[#b7b7b7] rounded-lg text-[#2c2c2c] font-medium text-base tracking-[-0.07px]"
           >
             Sign Up

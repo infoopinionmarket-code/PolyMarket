@@ -648,7 +648,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
 
   // Handle bet button click
   const handleMakeBet = () => {
-    window.location.href = 'https://markets.inout.games/?authToken=7dbe639470ff4f12abd41983601b51db6da74cfcc4af23bf08c7f6c413f4a6b51ab948950eb27b99dccaa23e57ba3a56bfe370715beca72cb302dbd4b59a80d8&operatorId=72e338d0-5b66-4c3a-8976-c31ea5957bc9&currency=INR&lang=en';
+    window.location.href = 'https://auth.opinion-market.com/';
   };
 
   // Chart Y-axis labels
@@ -716,9 +716,9 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
           onTouchEnd={onTouchEnd}
         >
           <CardContent className="p-4 sm:p-6 lg:p-10">
-            <div className="flex flex-col lg:flex-row items-start justify-between gap-6 lg:gap-8">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8">
               {/* Left side - Question details */}
-              <div className="flex flex-col w-full lg:w-[350px] items-start gap-4 lg:gap-6">
+              <div className="flex flex-col w-full lg:flex-1 items-start gap-4 lg:gap-6">
                 <div className="flex items-center gap-3 sm:gap-4 w-full">
                   <img
                     className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-cover rounded-lg flex-shrink-0"
@@ -780,7 +780,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
                       Potential Return
                     </span>
                     <span className="font-bold text-[#b2d33a] text-3xl font-['Inter',Helvetica] leading-[21px] whitespace-nowrap">
-                      {selectedBet ? `₹${potentialIncome}` : '₹0'}
+                      {selectedBet ? `₹${potentialIncome}` : '₹x4-20'}
                     </span>
                   </div>
                 </div>
@@ -797,7 +797,7 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
               </div>
 
               {/* Right side - Chart */}
-              <div className="flex flex-col w-full lg:flex-1 lg:min-w-[600px] items-end gap-4 lg:gap-6 ml-0 lg:ml-8">
+              <div className="flex flex-col w-full lg:flex-1 items-end gap-4 lg:gap-6 ml-0 lg:ml-8">
                 <div className="flex w-full items-center justify-end gap-6">
                   <div className="flex items-center gap-6">
                     <div className="inline-flex items-center gap-1">

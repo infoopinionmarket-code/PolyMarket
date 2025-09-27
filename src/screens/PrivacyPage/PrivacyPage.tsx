@@ -11,9 +11,9 @@ export const PrivacyPage = (): JSX.Element => {
         <div className="flex w-full max-w-[1440px] items-center gap-4 relative px-4 sm:px-8 lg:px-20">
           <Link to="/">
             <img
-              className="relative w-[90px] h-[40px] sm:w-[117px] sm:h-[52px]"
+              className="relative w-[108px] h-[48px] sm:w-[140px] sm:h-[62px]"
               alt="Opinion Market Logo"
-              src="/logo.svg"
+              src="/OMLogo.png"
             />
           </Link>
           

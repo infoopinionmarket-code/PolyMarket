@@ -12,7 +12,7 @@ import { ScrollToTop } from "./components/ScrollToTop";
 export const App = (): JSX.Element => {
   // Google Analytics Measurement ID - замените на ваш реальный ID
   // Пример: const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
-  const GA_MEASUREMENT_ID = process.env.REACT_APP_GA_MEASUREMENT_ID;
+  const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
 
   return (
     <>

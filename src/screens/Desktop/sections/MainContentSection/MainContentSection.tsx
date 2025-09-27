@@ -42,9 +42,9 @@ export const MainContentSection: React.FC<MainContentSectionProps> = ({ activeCa
       {/* Top section with logo and auth buttons */}
       <div className="flex w-full max-w-[1440px] items-center gap-4 relative px-4 sm:px-8 lg:px-20">
         <img
-          className="relative w-[90px] h-[40px] sm:w-[117px] sm:h-[52px]"
+          className="relative w-[108px] h-[48px] sm:w-[140px] sm:h-[62px]"
           alt="Opinion Market Logo"
-          src="/logo.svg"
+          src="/OMLogo.png"
         />
 
         <div className="flex-1" />
@@ -52,14 +52,14 @@ export const MainContentSection: React.FC<MainContentSectionProps> = ({ activeCa
         <div className="flex items-center gap-1 sm:gap-2">
           <Button
             variant="ghost"
-            onClick={() => window.location.href = 'https://markets.inout.games/?authToken=7dbe639470ff4f12abd41983601b51db6da74cfcc4af23bf08c7f6c413f4a6b51ab948950eb27b99dccaa23e57ba3a56bfe370715beca72cb302dbd4b59a80d8&operatorId=72e338d0-5b66-4c3a-8976-c31ea5957bc9&currency=INR&lang=en'}
+            onClick={() => window.location.href = 'https://auth.opinion-market.com/'}
             className="h-8 sm:h-9 px-2 sm:px-4 rounded-[5.6px] text-white font-medium text-sm sm:text-base"
           >
             Login
           </Button>
 
           <Button 
-            onClick={() => window.location.href = 'https://markets.inout.games/?authToken=7dbe639470ff4f12abd41983601b51db6da74cfcc4af23bf08c7f6c413f4a6b51ab948950eb27b99dccaa23e57ba3a56bfe370715beca72cb302dbd4b59a80d8&operatorId=72e338d0-5b66-4c3a-8976-c31ea5957bc9&currency=INR&lang=en'}
+            onClick={() => window.location.href = 'https://auth.opinion-market.com/'}
             className="h-8 sm:h-10 px-2 sm:px-3 py-0 bg-[#c7c7c7] hover:bg-[#b8b8b8] rounded-lg"
           >
             <span className="font-medium text-[#2c2c2c] text-sm sm:text-base tracking-[-0.07px]">

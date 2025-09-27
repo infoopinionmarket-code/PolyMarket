@@ -588,7 +588,7 @@ export const EventDetailsPage = (): JSX.Element => {
   };
 
   const handleMakeBet = () => {
-    window.location.href = 'https://markets.inout.games/?authToken=7dbe639470ff4f12abd41983601b51db6da74cfcc4af23bf08c7f6c413f4a6b51ab948950eb27b99dccaa23e57ba3a56bfe370715beca72cb302dbd4b59a80d8&operatorId=72e338d0-5b66-4c3a-8976-c31ea5957bc9&currency=INR&lang=en';
+    window.location.href = 'https://auth.opinion-market.com/';
   };
 
   const potentialIncome = calculatePotentialIncome();

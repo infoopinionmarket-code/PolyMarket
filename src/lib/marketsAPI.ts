@@ -51,26 +51,42 @@ export async function fetchMarkets(params: GetMarketsParams = {}): Promise<APIRe
   const bodyString = JSON.stringify(params);
   
   try {
+    console.log('🔵 Fetching markets with params:', params);
+    console.log('🔵 Request body:', bodyString);
+    
     const signature = await createSignature(bodyString);
+    console.log('🔵 Generated signature:', signature);
+    
+    const headers = {
+      'Content-Type': 'application/json',
+      'x-client-id': OPERATOR_ID,
+      'x-request-signature': signature,
+      'accept-language': 'ru'
+    };
+    console.log('🔵 Request headers:', headers);
     
     const response = await fetch(API_BASE_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-client-id': OPERATOR_ID,
-        'x-request-signature': signature,
-        'accept-language': 'ru'
-      },
+      headers,
       body: bodyString,
     });
     
+    console.log('🔵 Response status:', response.status);
+    console.log('🔵 Response headers:', Object.fromEntries(response.headers.entries()));
+    
     if (!response.ok) {
-      throw new Error(`API error: ${response.status}`);
+      const errorText = await response.text();
+      console.error('❌ API error response:', errorText);
+      throw new Error(`API error: ${response.status} - ${errorText}`);
     }
     
-    return await response.json();
+    const data = await response.json();
+    console.log('✅ API response data:', data);
+    console.log('✅ Markets count:', data.markets?.length || 0);
+    
+    return data;
   } catch (error) {
-    console.error('Error fetching markets:', error);
+    console.error('❌ Error fetching markets:', error);
     throw error;
   }
 }

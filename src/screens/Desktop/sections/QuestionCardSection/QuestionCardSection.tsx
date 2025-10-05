@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent, CardFooter } from "../../../../components/ui/card";
 import { Separator } from "../../../../components/ui/separator";
+import { useMarkets } from "../../../../hooks/useMarkets";
 
 interface QuestionCardSectionProps {
   activeCategory?: string;
@@ -24,8 +25,15 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
   // Autoplay state
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Main featured questions data for carousel - all events from all categories
-  const mainQuestions = [
+  // Fetch markets from API
+  const { markets: apiMarkets, loading: apiLoading, error: apiError } = useMarkets({
+    limit: 100,
+    'filter.status': 'active',
+    'filter.sort_by': 'newest'
+  });
+
+  // Fallback mock data (used if API returns empty)
+  const mockMainQuestions = [
     // Economy
     {
       id: 'economy-0',
@@ -532,6 +540,10 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
     }
   ];
 
+  // Use API data if available, otherwise use mock data
+  const mainQuestions = apiMarkets.length > 0 ? apiMarkets : mockMainQuestions;
+  const isUsingApiData = apiMarkets.length > 0;
+
   const totalSlides = mainQuestions.length;
 
   // Data for the grid of smaller question cards
@@ -703,9 +715,38 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
     // Prevent navigation when clicking on interactive elements
     e.stopPropagation();
   };
+  // Show loading state
+  if (apiLoading) {
+    return (
+      <section className="flex flex-col w-full items-center gap-6 sm:gap-8 lg:gap-10 py-8 sm:py-12">
+        <div className="flex flex-col w-full max-w-[1440px] items-center justify-center gap-4 px-4 sm:px-8 lg:px-20 min-h-[400px]">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#b2d33a]"></div>
+          <p className="text-white text-lg">Loading markets...</p>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="flex flex-col w-full items-center gap-6 sm:gap-8 lg:gap-10 py-8 sm:py-12">
       <div className="flex flex-col w-full max-w-[1440px] items-start gap-6 sm:gap-8 lg:gap-10 px-4 sm:px-8 lg:px-20">
+      {/* Data source indicator */}
+      {!isUsingApiData && (
+        <div className="w-full bg-yellow-900/20 border border-yellow-600/30 rounded-lg px-4 py-3 flex items-center gap-3">
+          <span className="text-yellow-400 text-sm">⚠️</span>
+          <p className="text-yellow-200 text-sm">
+            Demo Mode: Showing sample data. API returned no markets.
+          </p>
+        </div>
+      )}
+      {isUsingApiData && (
+        <div className="w-full bg-green-900/20 border border-green-600/30 rounded-lg px-4 py-3 flex items-center gap-3">
+          <span className="text-green-400 text-sm">✓</span>
+          <p className="text-green-200 text-sm">
+            Live Data: Showing {mainQuestions.length} markets from API
+          </p>
+        </div>
+      )}
       {/* Main featured question card with carousel - only show on "all" category */}
       {showMainCard && activeCategory === "all" && (
       <div className="relative w-full">

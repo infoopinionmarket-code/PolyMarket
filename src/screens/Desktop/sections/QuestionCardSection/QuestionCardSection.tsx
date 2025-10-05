@@ -566,7 +566,8 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
   // Calculate potential income based on bet amount and odds (x4-20 multiplier)
   const calculatePotentialIncome = (questionId: string, betType: 'yes' | 'no') => {
     const betAmount = betAmounts[questionId] || 100;
-    const currentQuestion = mainQuestions[currentSlide];
+    const allQuestions = apiMarkets.length > 0 ? apiMarkets : mockMainQuestions;
+    const currentQuestion = allQuestions[currentSlide];
     
     // Generate multiplier between 4x and 20x based on odds
     let multiplier;
@@ -606,8 +607,9 @@ export const QuestionCardSection = ({ activeCategory = "all", showMainCard = tru
 
   // Generate category-specific content
   const generateCategoryContent = (category: string) => {
+    const allQuestions = apiMarkets.length > 0 ? apiMarkets : mockMainQuestions;
     // Filter events by category
-    const filtered = mainQuestions.filter(question => {
+    const filtered = allQuestions.filter(question => {
       // Handle both "tech" and "technology" for backward compatibility
       if (category === "technology") {
         return question.category === "technology" || question.category === "tech";

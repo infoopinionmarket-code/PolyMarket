@@ -10,34 +10,38 @@ const OPERATOR_ID = 'db96e2d8-e8fb-4b12-97de-c3a473fe3251';
 
 /**
  * Create HMAC SHA256 signature for request body
- * Note: This would normally be done server-side, but for now using client-side
+ * Browser-compatible version using Web Crypto API
  */
 async function createSignature(body: string): Promise<string> {
   const secretKey = '40e6277e007345a43b1eb7218ec53d0da12583d513695b7d801c2427a8e69fce';
   
-  // Convert hex secret key to Uint8Array
-  const keyData = new Uint8Array(
-    secretKey.match(/.{1,2}/g)?.map(byte => parseInt(byte, 16)) || []
-  );
-  
-  // Import key for HMAC
-  const key = await crypto.subtle.importKey(
-    'raw',
-    keyData,
-    { name: 'HMAC', hash: 'SHA-256' },
-    false,
-    ['sign']
-  );
-  
-  // Create signature
-  const encoder = new TextEncoder();
-  const data = encoder.encode(body);
-  const signature = await crypto.subtle.sign('HMAC', key, data);
-  
-  // Convert to hex
-  return Array.from(new Uint8Array(signature))
-    .map(b => b.toString(16).padStart(2, '0'))
-    .join('');
+  try {
+    // Convert hex secret key to ArrayBuffer
+    const keyData = new Uint8Array(
+      secretKey.match(/.{1,2}/g)!.map(byte => parseInt(byte, 16))
+    );
+    
+    // Import key for HMAC
+    const key = await window.crypto.subtle.importKey(
+      'raw',
+      keyData.buffer,
+      { name: 'HMAC', hash: { name: 'SHA-256' } },
+      false,
+      ['sign']
+    );
+    
+    // Create signature
+    const encoder = new TextEncoder();
+    const data = encoder.encode(body);
+    const signatureBuffer = await window.crypto.subtle.sign('HMAC', key, data.buffer);
+    
+    // Convert ArrayBuffer to hex string
+    const signatureArray = Array.from(new Uint8Array(signatureBuffer));
+    return signatureArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  } catch (error) {
+    console.error('Error creating signature:', error);
+    throw error;
+  }
 }
 
 /**

@@ -54,7 +54,7 @@ export const Footer = (): JSX.Element => {
             </Button>
 
             <Button 
-              onClick={() => window.location.href = 'https://auth.opinion-market.com/'}
+              onClick={() => window.location.href = 'https://app.opinion-market.com/registration'}
               className="h-8 px-3 py-0 bg-[#c7c7c7] hover:bg-[#b7b7b7] rounded-lg text-[#2c2c2c] font-medium text-sm"
             >
               Sign Up
@@ -117,7 +117,7 @@ export const Footer = (): JSX.Element => {
           </Button>
 
           <Button 
-            onClick={() => window.location.href = 'https://auth.opinion-market.com/'}
+            onClick={() => window.location.href = 'https://app.opinion-market.com/registration'}
             className="h-10 px-3 py-0 bg-[#c7c7c7] hover:bg-[#b7b7b7] rounded-lg text-[#2c2c2c] font-medium text-base tracking-[-0.07px]"
           >
             Sign Up

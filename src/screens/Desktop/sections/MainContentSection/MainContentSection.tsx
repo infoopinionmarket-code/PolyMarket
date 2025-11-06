@@ -59,7 +59,7 @@ export const MainContentSection: React.FC<MainContentSectionProps> = ({ activeCa
           </Button>
 
           <Button 
-            onClick={() => window.location.href = 'https://auth.opinion-market.com/'}
+            onClick={() => window.location.href = 'https://app.opinion-market.com/registration'}
             className="h-8 sm:h-10 px-2 sm:px-3 py-0 bg-[#c7c7c7] hover:bg-[#b8b8b8] rounded-lg"
           >
             <span className="font-medium text-[#2c2c2c] text-sm sm:text-base tracking-[-0.07px]">

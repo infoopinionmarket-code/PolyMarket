@@ -52,14 +52,14 @@ export const MainContentSection: React.FC<MainContentSectionProps> = ({ activeCa
         <div className="flex items-center gap-1 sm:gap-2">
           <Button
             variant="ghost"
-            onClick={() => window.location.href = 'https://auth.opinion-market.com/'}
+            onClick={() => window.location.href = 'https://app.opinion-market.com/'}
             className="h-8 sm:h-9 px-2 sm:px-4 rounded-[5.6px] text-white font-medium text-sm sm:text-base"
           >
             Login
           </Button>
 
           <Button 
-            onClick={() => window.location.href = 'https://app.opinion-market.com/'}
+            onClick={() => window.location.href = 'https://app.opinion-market.com/registration'}
             className="h-8 sm:h-10 px-2 sm:px-3 py-0 bg-[#c7c7c7] hover:bg-[#b8b8b8] rounded-lg"
           >
             <span className="font-medium text-[#2c2c2c] text-sm sm:text-base tracking-[-0.07px]">

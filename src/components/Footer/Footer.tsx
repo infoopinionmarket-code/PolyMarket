@@ -47,14 +47,14 @@ export const Footer = (): JSX.Element => {
           <div className="flex items-center gap-2 lg:hidden">
             <Button
               variant="ghost"
-              onClick={() => window.location.href = 'https://auth.opinion-market.com/'}
+              onClick={() => window.location.href = 'https://app.opinion-market.com/'}
               className="h-8 px-3 text-white font-medium text-sm hover:bg-[#3c3c3c]"
             >
               Login
             </Button>
 
             <Button 
-              onClick={() => window.location.href = 'https://app.opinion-market.com/'}
+              onClick={() => window.location.href = 'https://app.opinion-market.com/registration'}
               className="h-8 px-3 py-0 bg-[#c7c7c7] hover:bg-[#b7b7b7] rounded-lg text-[#2c2c2c] font-medium text-sm"
             >
               Sign Up
@@ -110,7 +110,7 @@ export const Footer = (): JSX.Element => {
         <div className="hidden lg:flex items-center gap-2">
           <Button
             variant="ghost"
-            onClick={() => window.location.href = 'https://auth.opinion-market.com/'}
+            onClick={() => window.location.href = 'https://app.opinion-market.com/'}
             className="h-9 px-4 text-white font-medium text-[14.2px] hover:bg-[#3c3c3c]"
           >
             Login
